@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will you be my Valentine?</title>
+    <title>Gomu, Will you be my Valentine?</title>
     <style>
         * {
             margin: 0;
@@ -82,6 +82,15 @@
             right: 0;
             transition: all 0.3s ease;
         }
+        
+        .question-image {
+            max-width: 400px;
+            width: 100%;
+            border-radius: 20px;
+            margin: 20px auto 30px;
+            box-shadow: 0 10px 40px rgba(255, 20, 147, 0.3);
+            display: block;
+        }
 
         .celebration {
             display: none;
@@ -142,7 +151,8 @@
 <body>
     <div class="container">
         <div class="question-section" id="questionSection">
-            <h1>Will you be my Valentine?</h1>
+            <h1>Gomu, will you be my Valentine?</h1>
+            <img src="val/get.jpeg" alt="Celebration"  class="question-image">
             <div class="button-container">
                 <button id="yesBtn">Yes</button>
                 <button id="noBtn">No</button>
@@ -151,7 +161,7 @@
 
         <div class="celebration" id="celebration">
             <h1>🎉</h1>
-            <img src="https://tenor.com/kMD8Y7GuynB.gif" alt="Celebration">
+            <img src="val/acceptance.gif" alt="Celebration">
             <div class="celebration-text">
                 Yay! I love you <span class="heart">❤️</span>
             </div>
