@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will you be my Valentine?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 100%);
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, #ff1493, #ff69b4, #ff1493);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 50px;
+            font-weight: bold;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            position: relative;
+            height: 80px;
+        }
+
+        button {
+            padding: 20px 50px;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: absolute;
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+            left: 0;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
+        }
+
+        #noBtn {
+            background: linear-gradient(135deg, #ddd, #bbb);
+            color: #666;
+            right: 0;
+            transition: all 0.3s ease;
+        }
+
+        .celebration {
+            display: none;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .celebration img {
+            max-width: 400px;
+            width: 100%;
+            border-radius: 20px;
+            margin: 30px 0;
+            box-shadow: 0 10px 40px rgba(255, 20, 147, 0.3);
+        }
+
+        .celebration-text {
+            font-size: 2.5rem;
+            color: #ff1493;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .heart {
+            display: inline-block;
+            color: #ff1493;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            font-size: 3rem;
+            margin-left: 10px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+
+        .question-section {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="question-section" id="questionSection">
+            <h1>Will you be my Valentine?</h1>
+            <div class="button-container">
+                <button id="yesBtn">Yes</button>
+                <button id="noBtn">No</button>
+            </div>
+        </div>
+
+        <div class="celebration" id="celebration">
+            <h1>🎉</h1>
+            <img src="https://tenor.com/kMD8Y7GuynB.gif" alt="Celebration">
+            <div class="celebration-text">
+                Yay! I love you <span class="heart">❤️</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const questionSection = document.getElementById('questionSection');
+        const celebration = document.getElementById('celebration');
+
+        // Make the "No" button float away when cursor gets near
+        noBtn.addEventListener('mouseenter', () => {
+            const randomX = Math.random() * (window.innerWidth - 200) - (window.innerWidth / 2 - 100);
+            const randomY = Math.random() * (window.innerHeight - 200) - (window.innerHeight / 2 - 100);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = `${Math.max(50, Math.min(window.innerWidth - 200, window.innerWidth / 2 + randomX))}px`;
+            noBtn.style.top = `${Math.max(50, Math.min(window.innerHeight - 100, window.innerHeight / 2 + randomY))}px`;
+        });
+
+        // Show celebration when "Yes" is clicked
+        yesBtn.addEventListener('click', () => {
+            questionSection.style.display = 'none';
+            celebration.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
